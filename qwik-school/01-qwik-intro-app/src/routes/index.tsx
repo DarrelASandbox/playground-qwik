@@ -1,15 +1,24 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useSignal } from '@builder.io/qwik';
 
 export default component$(() => {
+  const isMiskoVisibleSignal = useSignal(false);
+
   return (
     <>
-      <Misko />
       <div>Llamas</div>
-      <button onClick$={() => console.log('Ahoj!')}>Ahoj!</button>
+      <button
+        onClick$={() => {
+          isMiskoVisibleSignal.value = !isMiskoVisibleSignal.value;
+          console.log('Ahoj!');
+        }}
+      >
+        Ahoj!
+      </button>
+      {isMiskoVisibleSignal.value && <Misko />}
     </>
   );
 });
 
-const Misko = component$(() => <h1>Misko!</h1>);
+const Misko = component$(() => <h1>Misko Component!!</h1>);
 
 export { Misko };

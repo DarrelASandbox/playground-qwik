@@ -165,6 +165,8 @@ export default component$(() => {
 });
 ```
 
+- [The dollar $ sign](https://qwik.builder.io/docs/advanced/dollar/)
+
 &nbsp;
 
 ---
