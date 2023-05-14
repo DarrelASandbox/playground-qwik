@@ -156,6 +156,15 @@ IWA (Instant Web Apps)       ┌─────────────┐
 
 - `npm create qwik@latest`
 
+```tsx
+// `$` indicates the lazy loading boundary for both the optimizer and developers
+// Lazy loading boundary means it is asynchronous
+// 2 `$` means each closure will get extracted into its own file
+export default component$(() => {
+  return <div>Llamas</div>;
+});
+```
+
 &nbsp;
 
 ---
