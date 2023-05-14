@@ -152,3 +152,11 @@ IWA (Instant Web Apps)       ┌─────────────┐
 ---
 
 &nbsp;
+
+- `npm create qwik@latest`
+
+&nbsp;
+
+---
+
+&nbsp;
