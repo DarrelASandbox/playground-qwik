@@ -11,6 +11,8 @@
 
 &nbsp;
 
+## Why Qwik
+
 - **User Experience**
   - Waiting for the app to **load**
   - Waiting for the app to **respond**
@@ -19,12 +21,6 @@
   - Structure
   - Do more with less
   - Simple to understand
-
-&nbsp;
-
----
-
-&nbsp;
 
 ```
   ┌───────────────────────────────────────────────────────────────┐
@@ -84,6 +80,72 @@ IWA (Instant Web Apps)       ┌─────────────┐
 - SEO Ranking
 - Customer Satisfaction
 - Conversions
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## What makes Qwik different
+
+- **SPA**
+  - **Build:** Optimizing using static tree shaking
+  - **Server:** Empty `index.html` needs to run JavaScript
+  - **Client:** Rendering using the the downloaded JavaScript
+- **SSR + Hydration**
+  - **Build:** Same as SPA
+  - **Server:** Send rendered html to client but user cannot interact with it
+  - **Client:** Hydration gives the interactivity but it can be expensive
+
+&nbsp;
+
+- **Lazy Loading:** Route chunking at build stage using code splitting by route
+  - Manual import so that the bundle knows how to split it up
+- **Resumability:** JavaScript streaming using Qwik
+  - **Build:**
+    - Same as the other two
+    - But code splitting using closure chunking using Qwik optimizer (build time tool)
+  - **Server:**
+    - Qwik render can pause to take a snapshot (Store in the html)
+    - Hydration needs to replay (rebuilding) to handle state
+    - Context and information required
+      - Components Boundaries
+      - Event Listeners
+      - Page's App State
+    - **Dynamic Tree Shaking** using pointers (URLs)
+  - **Client:**
+    - Prefetching/ buffering all the interaction points using service worker and store chunks in browser cache
+    - Lazy execution using Qwik loader to load JIT using the browser cache stored
+
+&nbsp;
+
+---
+
+&nbsp;
+
+- Static and dynamic tree shaking are techniques used in the optimization process of bundling JavaScript applications. Tree shaking is the process of eliminating dead or unused code from the final bundle. This not only reduces the overall size of the application but also helps improve performance. Let's compare the two approaches:
+
+1. **Static Tree Shaking:**
+   - Static tree shaking is the more common and widely used approach. It relies on the static analysis of the codebase to identify and eliminate dead code. This technique makes use of ES6 modules and their import/export statements. Since the import and export statements are statically analyzable, build tools like Webpack and Rollup can easily identify which parts of the code are being used and which are not. Any unused code is then eliminated from the final bundle.
+   - **Pros:**
+     - More effective in reducing bundle size, as it analyzes the entire codebase.
+     - Compatible with popular build tools like Webpack and Rollup.
+     - Works well with ES6 modules and their import/export statements.
+   - **Cons:**
+     - Limited to the capabilities of static analysis, meaning it might not be able to identify some cases of dead code.
+     - May not work effectively with code that has side effects or dynamic imports.
+2. Dynamic Tree Shaking:
+   - Dynamic tree shaking, on the other hand, relies on runtime analysis to identify and eliminate dead code. This approach tracks the usage of code during the execution of the application and removes the unused portions. Dynamic tree shaking can be more accurate in identifying dead code, but it comes with performance overheads due to runtime analysis.
+   - **Pros:**
+     - Can potentially identify more cases of dead code, as it analyzes code usage during runtime.
+     - Can work with code that has side effects or dynamic imports.
+   - **Cons:**
+     - Less popular and not as well-supported as static tree shaking.
+     - Performance overhead due to runtime analysis.
+     - Not as effective in reducing the initial bundle size, since the elimination of dead code happens during runtime.
+
+- In conclusion, static tree shaking is the more popular and widely used technique due to its effectiveness in reducing bundle sizes and compatibility with modern build tools. Dynamic tree shaking, although potentially more accurate in identifying dead code, comes with performance overheads and is not as well-supported.
 
 &nbsp;
 
