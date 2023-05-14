@@ -4,6 +4,7 @@
 - [Builder - Performance Insights](https://www.builder.io/c/performance-insights)
 - [Twitter - shai_reznik](https://twitter.com/shai_reznik)
 - [Twitter - mhevery](https://twitter.com/mhevery)
+- [qwik-intro-app](https://github.com/hirezio/qwik-intro-app)
 
 &nbsp;
 
