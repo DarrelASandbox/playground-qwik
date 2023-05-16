@@ -14,7 +14,9 @@ export default component$(() => {
         onInput$={(e) => (messageSignal.value = (e.target as HTMLInputElement).value)}
       />
       <hr />
-      <Projector message={messageSignal.value} />
+      <Projector message={messageSignal.value}>
+        Slot component for Projector component
+      </Projector>
     </div>
   );
 });
