@@ -1,9 +1,18 @@
-import type { Signal } from '@builder.io/qwik';
-import { Slot, component$, useSignal, useTask$ } from '@builder.io/qwik';
+import {
+  Slot,
+  component$,
+  useContext,
+  useContextProvider,
+  useSignal,
+  useTask$,
+} from '@builder.io/qwik';
+import { beerContextId } from './beer-context-id';
 
 export default component$(() => {
   const isMiskoVisibleSignal = useSignal(false);
   const didHeGetABeerSignal = useSignal(false);
+
+  useContextProvider(beerContextId, didHeGetABeerSignal);
 
   useTask$(({ track }) => {
     // Don't execute the code unless the value changes
@@ -17,23 +26,26 @@ export default component$(() => {
         Ahoj!
       </button>
 
-      <BeerGiver gotBeerSignal={didHeGetABeerSignal} />
+      <BeerGiver />
       {isMiskoVisibleSignal.value && <Misko>This is a slot.</Misko>}
     </>
   );
 });
 
-interface BeerGiverProps {
-  gotBeerSignal: Signal<boolean>;
-}
-
-const BeerGiver = component$((props: BeerGiverProps) => (
+const BeerGiver = component$(() => (
   <div>
-    <button onClick$={() => (props.gotBeerSignal.value = true)}>
-      Give a beer to Misko
-    </button>
+    <BeerGivingButton />
   </div>
 ));
+
+const BeerGivingButton = component$(() => {
+  const gotBeerSignal = useContext(beerContextId);
+  return (
+    <div>
+      <button onClick$={() => (gotBeerSignal.value = true)}>Give a beer to Misko</button>
+    </div>
+  );
+});
 
 const Misko = component$(() => (
   <div>
