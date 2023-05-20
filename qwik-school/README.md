@@ -156,6 +156,7 @@ IWA (Instant Web Apps)       ┌─────────────┐
 
 - `npm create qwik@latest`
 - `npx qwik add`
+- `npm run build` - Closure chunks are inside `dist/build`
 
 ```tsx
 // `$` indicates the lazy loading boundary for both the optimizer and developers
