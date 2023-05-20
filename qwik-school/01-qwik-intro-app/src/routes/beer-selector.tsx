@@ -1,4 +1,5 @@
-import { Resource, component$, useResource$ } from '@builder.io/qwik';
+import { Resource, component$, useResource$, useStylesScoped$ } from '@builder.io/qwik';
+import styles from './beer-selector.css?inline'; // inline keyword
 
 interface Beer {
   id: number;
@@ -6,6 +7,10 @@ interface Beer {
 }
 
 const BeerSelector = component$(() => {
+  // Global
+  // useStyles$(styles);
+  useStylesScoped$(styles);
+
   const beersResource = useResource$<Beer[]>(async () => {
     // Can use `fetch` for both server and client
     const result = await fetch('http://localhost:5173/api/beers');

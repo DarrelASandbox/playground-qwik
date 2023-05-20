@@ -6,6 +6,9 @@ export default component$(() => {
 
   return (
     <footer>
+      <select>
+        <option>THE STYLES FOR beer-selector css SHOULD NOT BE APPLIED HERE</option>
+      </select>
       I AM THE FOOTER
     </footer>
   );
