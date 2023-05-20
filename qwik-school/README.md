@@ -172,3 +172,18 @@ export default component$(() => {
 ---
 
 &nbsp;
+
+```js
+// Setup mock server using vite
+// Copy to `vite.config.ts`
+// `npm i --save-dev vite-plugin-simple-json-server` if required
+// `http://localhost:5173/api/beers`
+import jsonServer from 'vite-plugin-simple-json-server';
+jsonServer({ delay: 500, mockDir: 'mock-server' });
+```
+
+&nbsp;
+
+---
+
+&nbsp;
