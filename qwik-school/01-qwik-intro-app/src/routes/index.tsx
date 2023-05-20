@@ -37,7 +37,8 @@ const BeerGiver = component$(() => (
   <div>
     <BeerGivingButton />
     <hr />
-    <BeerSelector />
+    {/* Moved component from SSR to Client to see loading... */}
+    {/* <BeerSelector />  */}
   </div>
 ));
 
@@ -54,6 +55,7 @@ const Misko = component$(() => (
   <div>
     <h1>Misko Component!!</h1>
     <Slot />
+    <BeerSelector />
   </div>
 ));
 
