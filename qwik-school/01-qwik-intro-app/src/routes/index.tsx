@@ -45,7 +45,12 @@ const BeerGivingButton = component$(() => {
   const gotBeerSignal = useContext(beerContextId);
   return (
     <div>
-      <button onClick$={() => (gotBeerSignal.value = true)}>Give a beer to Misko</button>
+      <button
+        class="p-5 bg-amber-500 text-lg hover:bg-amber-200"
+        onClick$={() => (gotBeerSignal.value = true)}
+      >
+        Give a beer to Misko
+      </button>
     </div>
   );
 });
