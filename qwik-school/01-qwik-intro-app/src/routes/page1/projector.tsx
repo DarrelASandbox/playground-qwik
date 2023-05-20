@@ -1,15 +1,15 @@
-import { Slot, component$ } from '@builder.io/qwik';
+import { Slot, component$, useContext } from '@builder.io/qwik';
+import { searchContextId } from './search-context-id';
 
-interface ProjectorProps {
-  message: string;
-  color: string;
-}
+const Projector = component$(() => {
+  const { colorSignal: color, messageSignal: message } = useContext(searchContextId);
 
-const Projector = component$((props: ProjectorProps) => (
-  <div>
-    <Slot />
-    <p style={'color:' + props.color}>{props.message}</p>
-  </div>
-));
+  return (
+    <div>
+      <Slot />
+      <p style={'color:' + color.value}>{message.value}</p>
+    </div>
+  );
+});
 
 export { Projector };

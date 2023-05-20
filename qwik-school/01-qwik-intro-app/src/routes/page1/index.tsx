@@ -1,9 +1,12 @@
-import { component$, useSignal, useTask$ } from '@builder.io/qwik';
+import { component$, useContextProvider, useSignal, useTask$ } from '@builder.io/qwik';
 import { Projector } from './projector';
+import { searchContextId } from './search-context-id';
 
 export default component$(() => {
   const messageSignal = useSignal('');
   const colorSignal = useSignal('black');
+
+  useContextProvider(searchContextId, { messageSignal, colorSignal });
 
   useTask$(({ track }) => {
     track(() => messageSignal.value);
@@ -22,9 +25,7 @@ export default component$(() => {
         onInput$={(e) => (messageSignal.value = (e.target as HTMLInputElement).value)}
       />
       <hr />
-      <Projector message={messageSignal.value} color={colorSignal.value}>
-        Slot component for Projector component
-      </Projector>
+      <Projector>Slot component for Projector component</Projector>
     </div>
   );
 });
