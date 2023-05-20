@@ -155,6 +155,7 @@ IWA (Instant Web Apps)       ┌─────────────┐
 &nbsp;
 
 - `npm create qwik@latest`
+- `npx qwik add`
 
 ```tsx
 // `$` indicates the lazy loading boundary for both the optimizer and developers
@@ -166,12 +167,6 @@ export default component$(() => {
 ```
 
 - [The dollar $ sign](https://qwik.builder.io/docs/advanced/dollar/)
-
-&nbsp;
-
----
-
-&nbsp;
 
 ```js
 // Setup mock server using vite
